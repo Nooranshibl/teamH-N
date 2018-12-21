@@ -21,4 +21,49 @@ public class lostitemService {
 	}
 	
 	
+public void SearchItem()
+	{
+		lostitemDatabase ob = new lostitemDatabase();
+		allitems = ob.getDataBase();
+		lostitem object = new lostitem();
+		System.out.println("Enter the Category");
+		String cat = input.nextLine();
+		boolean f = false;
+		for(int i=0 ; i<allitems.size() ; i++)
+		{
+			if (cat.equals(allitems.get(i).getCategory()))
+			{
+				System.out.println("found");
+				f=true;
+				break;
+			}
+			else 
+			{
+				System.out.println("not found");
+				break;
+			}
+		}
+		
+		if (f==true)
+		{
+			System.out.println("Enter the Description..");
+			String des = input.nextLine();
+			for (int i=0 ; i<allitems.size() ; i++)
+			{
+				if (des.equals(allitems.get(i).getDescription()))
+				{
+					System.out.println("found");
+					System.out.println(allitems.get(i).getDescription()+" , "+allitems.get(i).getCategory());
+					break;
+				}
+				
+				else
+				{
+					System.out.println("Not Found");
+					break;
+				}
+			}
+		}
+		
+	}
 }

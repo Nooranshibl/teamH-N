@@ -32,6 +32,31 @@ public class lostitemDatabase {
         }
 	}
 	
-
+	public static List<lostitem> getDataBase() {
+        List<lostitem> myList = new ArrayList<lostitem>();
+        try {
+        	String driver = "com.mysql.jdbc.Driver";
+            String url = "jdbc:mysql://localhost/lostitemDatabase";
+            String username = "root";
+            String password="";
+            Class.forName(driver);
+            Connection con = null;
+            if (con == null) {
+                con = DriverManager.getConnection(url, username, password);
+            }
+            System.out.println("Connection estd");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("select * from lostitem");
+            while (rs.next()) {
+                lostitem tmp=new lostitem();
+                tmp.setDescription(rs.getString(1));
+                tmp.setCategory(rs.getString(2));
+                myList.add(tmp);
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.print("Error : " + e.getMessage());
+        }
+        return myList;
+    }
 }
-
