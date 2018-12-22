@@ -31,7 +31,7 @@ public class userDataBase //create class Connectivity
                 myList.add(tmp);
                 //System.out.println(rs.getString(1) + "  " + rs.getString(2)+"  "+rs.getString(3)+ "  " +rs.getInt(4));
             }
-            con.close();
+           // con.close();
         } catch (Exception e) {
             System.out.print("Error : " + e.getMessage());
         }
