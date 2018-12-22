@@ -2,14 +2,14 @@ import java.sql.*;
 import java.util.*;
 
 public class lostitemDatabase {
-	
-	public void addLostitem (String Description , String Category)
-	{
-		try
+
+    public void addLostitem (String Description , String Category)
+    {
+        try
         {
             // create a mysql database connection
             String myDriver = "com.mysql.jdbc.Driver";
-            String myUrl = "jdbc:mysql://localhost/lostitemDatabase";
+            String myUrl = "jdbc:mysql://localhost/userdatabase";
             Class.forName(myDriver);
             Connection conn = DriverManager.getConnection(myUrl, "root", "");
 
@@ -19,7 +19,7 @@ public class lostitemDatabase {
             PreparedStatement preparedStmt = conn.prepareStatement(query);
             preparedStmt.setString(1, Description);
             preparedStmt.setString(2, Category);
-    
+
             // execute the preparedstatement
             preparedStmt.execute();
 
@@ -30,13 +30,13 @@ public class lostitemDatabase {
             System.err.println("Got an exception!");
             System.err.println(e.getMessage());
         }
-	}
-	
-	public static List<lostitem> getDataBase() {
+    }
+
+    public static List<lostitem> getDataBase() {
         List<lostitem> myList = new ArrayList<lostitem>();
         try {
-        	String driver = "com.mysql.jdbc.Driver";
-            String url = "jdbc:mysql://localhost/lostitemDatabase";
+            String driver = "com.mysql.jdbc.Driver";
+            String url = "jdbc:mysql://localhost/userdatabase";
             String username = "root";
             String password="";
             Class.forName(driver);
