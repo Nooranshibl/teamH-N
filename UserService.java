@@ -79,3 +79,32 @@ public class UserService {
         }
     }
 }
+ public void logIn()
+    {
+        userDataBase x= new userDataBase();
+        List<User> allUsers = new ArrayList<User>();
+        allUsers=x.getDataBase();
+        Scanner sc=new Scanner(System.in);
+        String email,password;
+        System.out.println("Enter e-mail: ");
+        email=sc.nextLine();
+        System.out.println("Enter Password: ");
+        password=sc.nextLine();
+        boolean found=false;
+        for (int i=0; i<allUsers.size();i++)
+        {
+            if (email.equals(allUsers.get(i).getEmail()) && password.equals(allUsers.get(i).getPassWord()))
+            {
+                found=true;
+                break;
+            }
+        }
+        if (found==true)
+        {
+            System.out.println("Logged in successfuly");
+        }
+        else
+        {
+            System.out.println("E-mail or password is wrong");
+        }
+    }
